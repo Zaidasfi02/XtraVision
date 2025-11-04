@@ -1,0 +1,44 @@
+package com.xtraVision.backend.entity;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
+public class Service {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	 private Long id;
+
+	    private String title;
+	    private String description;
+	    private String iconUrl;
+		public Long getId() {
+			return id;
+		}
+		public void setId(Long id) {
+			this.id = id;
+		}
+		public String getTitle() {
+			return title;
+		}
+		public void setTitle(String title) {
+			this.title = title;
+		}
+		public String getDescription() {
+			return description;
+		}
+		public void setDescription(String description) {
+			this.description = description;
+		}
+		public String getIconUrl() {
+			return iconUrl;
+		}
+		public void setIconUrl(String iconUrl) {
+			this.iconUrl = iconUrl;
+		}
+	    
+
+}
