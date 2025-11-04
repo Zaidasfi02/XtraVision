@@ -1,17 +1,27 @@
-# Use a stable Java 17 image (Eclipse Temurin)
+# 1️⃣ Use a lightweight Java 17 image
+FROM eclipse-temurin:17-jdk-jammy as builder
+
+# 2️⃣ Set working directory
+WORKDIR /app
+
+# 3️⃣ Copy everything
+COPY . .
+
+# 4️⃣ Give permission & build the Spring Boot JAR
+RUN chmod +x mvnw && ./mvnw clean package -DskipTests
+
+# ====================================================
+# 5️⃣ Create a second lightweight image just to run the app
 FROM eclipse-temurin:17-jdk-jammy
 
 WORKDIR /app
 
-# Copy application files
-COPY . .
+# 6️⃣ Copy only the built JAR from previous image
+COPY --from=builder /app/target/*.jar app.jar
 
-# Make the wrapper executable and build the application
-RUN chmod +x mvnw && ./mvnw clean package -DskipTests
-
-# Expose port (matches your SERVER_PORT env)
+# 7️⃣ Expose your app port
 EXPOSE 10000
 
-# Run the built jar
-CMD ["java", "-jar", "target/*.jar"]
+# 8️⃣ Run the JAR file
+ENTRYPOINT ["java", "-jar", "app.jar"]
 
