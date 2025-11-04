@@ -1,17 +1,17 @@
-# Use an official Java 17 image
-FROM openjdk:17-jdk-slim
+# Use a stable Java 17 image (Eclipse Temurin)
+FROM eclipse-temurin:17-jdk-jammy
 
-# Set working directory
 WORKDIR /app
 
-# Copy your project files
+# Copy application files
 COPY . .
 
-# Build the app using Maven Wrapper
+# Make the wrapper executable and build the application
 RUN chmod +x mvnw && ./mvnw clean package -DskipTests
 
-# Expose the port
+# Expose port (matches your SERVER_PORT env)
 EXPOSE 10000
 
-# Run the app
+# Run the built jar
 CMD ["java", "-jar", "target/*.jar"]
+
