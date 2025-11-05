@@ -10,7 +10,7 @@ const ServiceDetails = () => {
   useEffect(() => {
     const fetchService = async () => {
       try {
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/services${id}`);
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/services/${id}`);
         if (!response.ok) {
           throw new Error("Failed to fetch service details");
         }

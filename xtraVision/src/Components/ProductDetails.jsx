@@ -8,7 +8,7 @@ export default function ProductDetails() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/api/products${id}`)
+    fetch(`${import.meta.env.VITE_API_URL}/api/products/${id}`)
       .then((res) => {
         if (!res.ok) throw new Error("Failed to fetch product");
         return res.json();
