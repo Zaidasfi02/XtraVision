@@ -12,7 +12,9 @@ import com.xtraVision.backend.service.ContactFormService;
 
 @RestController
 @RequestMapping("/api/contacts")
-@CrossOrigin(origins="http://localhost:5173")
+@CrossOrigin(origins={ "https://xtravision-3.onrender.com",
+						"http://localhost:5173"
+})
 public class ContactFormController {
 
 	@Autowired

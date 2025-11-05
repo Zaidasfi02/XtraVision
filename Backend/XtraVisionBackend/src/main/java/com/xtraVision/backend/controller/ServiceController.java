@@ -18,7 +18,9 @@ import com.xtraVision.backend.service.ServiceService;
 
 @RestController
 @RequestMapping("/api/services")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = {"https://xtravision-3.onrender.com",
+						"http://localhost:5173"
+						})
 public class ServiceController {
 
 	@Autowired
